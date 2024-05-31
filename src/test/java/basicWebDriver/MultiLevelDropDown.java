@@ -1,0 +1,28 @@
+package basicWebDriver;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class MultiLevelDropDown {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("file:///C:/Users/HP/Desktop/demo.html");
+		WebElement tE = driver.findElement(By.id("standard_cars"));
+		Select sc = new Select(tE);
+		List<WebElement> op = sc.getOptions();			
+		int i = 0;
+		for (WebElement webElement : op) {
+			sc.selectByIndex(i)
+			;i++;
+			Thread.sleep(400);
+			
+		}
+		sc.deselectAll();
+		System.out.println(sc.isMultiple());
+	}
+}
